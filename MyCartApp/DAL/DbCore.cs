@@ -27,6 +27,7 @@ namespace MyCartApp.DAL
                     cmd.CommandType = CommandType.StoredProcedure;
                     if (param != null)
                     {
+
                         cmd.Parameters.AddRange(param);
                     }
 

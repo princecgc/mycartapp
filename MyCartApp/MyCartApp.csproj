@@ -57,6 +57,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Cart.aspx" />
+    <Content Include="images\Delete_Icon.png" />
+    <Content Include="images\update.png" />
+    <Content Include="ProductDetails.aspx" />
+    <Content Include="ProductList.aspx" />
     <Content Include="Categories.aspx" />
     <Content Include="css\animate.min.css" />
     <Content Include="css\bootstrap.css" />
@@ -124,11 +129,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BAL\Discount.cs" />
+    <Compile Include="BAL\Orders.cs" />
     <Compile Include="BAL\Product.cs" />
+    <Compile Include="BLL\OrderBLL.cs" />
     <Compile Include="BLL\ProductBLL.cs" />
     <Compile Include="BAL\Category.cs" />
     <Compile Include="BLL\CategoryBLL.cs" />
     <Compile Include="BLL\DiscountBLL.cs" />
+    <Compile Include="Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductDetails.aspx.cs">
+      <DependentUpon>ProductDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductDetails.aspx.designer.cs">
+      <DependentUpon>ProductDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductList.aspx.cs">
+      <DependentUpon>ProductList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductList.aspx.designer.cs">
+      <DependentUpon>ProductList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Categories.aspx.cs">
       <DependentUpon>Categories.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

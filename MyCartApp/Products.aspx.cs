@@ -33,14 +33,14 @@ namespace MyCartApp
             }
         }
 
-        
 
-       
 
+
+        static int prodId = 0;
         protected void prod_gridview_SelectedIndexChanged1(object sender, EventArgs e)
         {
-            int id = int.Parse(prod_gridview.SelectedDataKey.Value.ToString());
-            Product pro = pb.GetProduct(id);
+            prodId = int.Parse(prod_gridview.SelectedDataKey.Value.ToString());
+            Product pro = pb.GetProduct(prodId);
             name_text.Text = pro.Name;
             desc_text.Text = pro.Description;
             cost_text.Text = pro.Cost.ToString();
@@ -52,9 +52,15 @@ namespace MyCartApp
         protected void final_btn_Click(object sender, EventArgs e)
         {
             Product po = new Product();
+            po.Description = desc_text.Text;
             po.Name = name_text.Text;
+            po.Cost = double.Parse(cost_text.Text);
+            po.MinStock = int.Parse(minstock_text.Text);
+            po.ActualStock = int.Parse(actualstock_text.Text);
+            po.CategoryId = int.Parse(cat_list.SelectedValue.ToString());
             if (final_btn.Text == "Update")
             {
+                po.ProductId = prodId;
                 pb.UpdateProduct(po);
             }
             else

@@ -4,18 +4,18 @@
         <Columns>
             <asp:TemplateField HeaderText="id">
                 <ItemTemplate >
-                    <asp:Label ID="Label1" runat="server" Text='<%#Eval("id") %>'></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
 
                 </ItemTemplate>
                
             </asp:TemplateField>
             <asp:TemplateField HeaderText="name">
                 <ItemTemplate>
-                <asp:Label ID="Label2" runat="server" Text='<%#Eval("category_name ") %>'></asp:Label>
+                <asp:Label ID="Label2" runat="server" Text='<%#Eval("Name") %>'></asp:Label>
                     </ItemTemplate>
                 <EditItemTemplate>
 
-                    <asp:TextBox ID="TextBox1" runat="server" Text='<%#Eval("category_name ") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" Text='<%#Eval("Name") %>'></asp:TextBox>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="actions">

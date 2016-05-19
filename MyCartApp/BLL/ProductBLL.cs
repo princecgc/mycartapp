@@ -44,8 +44,12 @@ namespace MyCartApp.BLL
         public int InsertProduct(Product po)
         {
             SqlParameter[] par ={
-                                   new SqlParameter("id",po.Name),
-                                   new SqlParameter("cat_name",po.Name)
+                                   new SqlParameter("cost",po.Cost),
+                                   new SqlParameter("name",po.Name),
+                                   new SqlParameter("desc",po.Description),
+                                     new SqlParameter("cat_id",po.CategoryId),
+                                    new SqlParameter("min_stock",po.MinStock),
+                                     new SqlParameter("actual_stock",po.ActualStock)
                                };
             return core.CoreOps("spInsertProduct", par);
         }
@@ -53,10 +57,39 @@ namespace MyCartApp.BLL
         public int UpdateProduct(Product po)
         {
             SqlParameter[] par ={
-                                   new SqlParameter("id",cat.Id),
-                                   new SqlParameter("cat_name",cat.Name)
+                                    new SqlParameter("cost",po.Cost),
+                                    new SqlParameter("prod_id",po.ProductId),
+                                   new SqlParameter("prod_name",po.Name),
+                                    new SqlParameter("prod_desc",po.Description),
+                                   new SqlParameter("cat_id",po.CategoryId),
+                                    new SqlParameter("min_stock",po.MinStock),
+                                     new SqlParameter("actual_stock",po.ActualStock)
                                };
             return core.CoreOps("spUpdateProduct", par);
+        }
+        public void GetProductByCategory(int id)
+        {
+            SqlParameter[] par ={
+                                    new SqlParameter("id",id),
+                                };
+            DataTable dt = core.GetTable("spGetProductsByCategory", par);
+            if (dt != null)
+            {
+                products = new List<Product>();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    products.Add(new Product
+                    {
+                        ProductId = int.Parse(dr["prod_id"].ToString()),
+                        CategoryId = int.Parse(dr["cat_id"].ToString()),
+                        Description = dr["prod_desc"].ToString(),
+                        Name = dr["prod_name"].ToString(),
+                        Cost = double.Parse(dr["prod_cost"].ToString()),
+                        MinStock = int.Parse(dr["min_stock"].ToString()),
+                        ActualStock = int.Parse(dr["actual_stock"].ToString()),
+                    });
+                }
+            }
         }
     }
 }

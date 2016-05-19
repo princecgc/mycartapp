@@ -15,7 +15,7 @@ namespace MyCartApp.BLL
         public void GetAllDiscounts()
         {
             DbCore core = new DbCore();
-            DataTable dt = core.GetTable("spGetAllDiscounts");
+            DataTable dt = core.GetTable("spGetAllCoupons");
             if (dt != null)
             {
                 discounts = new List<Discount>();
@@ -37,6 +37,12 @@ namespace MyCartApp.BLL
         {
             Discount disc = null;
             disc = discounts.FirstOrDefault(p => p.Id == id);
+            return disc;
+        }
+        public Discount GetDiscount(string coupon)
+        {
+            Discount disc = null;
+            disc = discounts.FirstOrDefault(p => p.Coupon == coupon);
             return disc;
         }
     }
